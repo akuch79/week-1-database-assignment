@@ -1,19 +1,19 @@
-
--- Week 1 Database Assignment
+-- Week 1 MySQL Database Assignment
 -- Name: Margaret Akuch Deng
--- Database: Hospital Management System
+-- Project: Hospital Management System
+-- Database: hospital_management
 
--- 1. Create a database
-CREATE DATABASE hospital_management;
+-- Create the database only if it does not already exist so this script can be rerun safely.
+CREATE DATABASE IF NOT EXISTS hospital_management;
 
--- 2. Display all databases
+-- Display the databases available on the MySQL server.
 SHOW DATABASES;
 
--- 3. Select the database
+-- Select the database where the tables will be created.
 USE hospital_management;
 
--- 4. Create Patients table
-CREATE TABLE Patients (
+-- Create a table for patient details. The auto-incrementing primary key uniquely identifies each patient.
+CREATE TABLE IF NOT EXISTS Patients (
     patient_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -23,8 +23,8 @@ CREATE TABLE Patients (
     address VARCHAR(100)
 );
 
--- 5. Create Doctors table
-CREATE TABLE Doctors (
+-- Create a table for doctor details. The auto-incrementing primary key uniquely identifies each doctor.
+CREATE TABLE IF NOT EXISTS Doctors (
     doctor_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -32,8 +32,8 @@ CREATE TABLE Doctors (
     phone VARCHAR(20)
 );
 
--- 6. Create Appointments table
-CREATE TABLE Appointments (
+-- Create a table for appointments. Foreign keys link each appointment to an existing patient and doctor.
+CREATE TABLE IF NOT EXISTS Appointments (
     appointment_id INT AUTO_INCREMENT PRIMARY KEY,
     patient_id INT,
     doctor_id INT,
@@ -43,10 +43,10 @@ CREATE TABLE Appointments (
     FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id)
 );
 
--- 7. Display all tables
+-- Display the tables created in the selected database.
 SHOW TABLES;
 
--- 8. Describe table structures
+-- Display each table's columns, data types, and key information.
 DESCRIBE Patients;
 DESCRIBE Doctors;
 DESCRIBE Appointments;
